@@ -5,21 +5,44 @@ class Artist
 
   def initialize(name)
     @name = name
-    @songs = []
+   # @songs = []
    #@@all << self 
    self.save
   end
   
   def songs
-    @songs
+    #@songs
+   Song.all.select {|song| song.artist == self }
+   
   end 
   
   def self.all 
     @@all 
   end 
 
+
+
+
+# describe '#add_song' do
+#     it 'keeps track of an artist\'s songs' do
+#       artist = Artist.new('Michael Jackson')
+#       song_one = Song.new("Rock With You")
+#       song_two = Song.new("Smooth Criminal")
+#       smells_like_teen_spirit = Song.new("Smells Like Teen Spirit")
+#       artist.add_song(song_one)
+#       artist.add_song(song_two)
+#       expect(artist.songs).to eq([song_one, song_two])
+#     end
+#   end
+
+
   def add_song(song)
-    self.songs << song    
+    #@song << song
+    #song.artist = self 
+    self.songs << song 
+    
+   # self.songs << song 
+    #binding.pry 
   end
 
   def save
@@ -50,9 +73,9 @@ class Artist
   end
 
   def print_songs 
-    @songs.each do |song|
-      puts song.name
-    end 
+   # @songs.each do |song|
+   #   puts song.name
+   # end 
   # self.songs.each {|song| song.name}
   end
 end
